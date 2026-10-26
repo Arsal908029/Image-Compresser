@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Compressor Online — Reduce Image File Size</title>
+  <meta name="description" content="Compress JPG, PNG, and WebP images in your browser. Adjust quality, compare original and compressed sizes, and download the result.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/image-compressor/">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="PixelLite home"><span class="brand-mark">P</span> PixelLite</a>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="#compressor">Compressor</a><a href="#faq">FAQ</a></nav>
+  </header>
+  <main class="tool-main">
+    <section class="tool-intro"><p class="eyebrow">FREE • BROWSER-BASED</p><h1>Image Compressor</h1><p>Reduce image file size with adjustable quality. Select an image, compress it, compare the result, and download it.</p></section>
+    <section class="tool-card" id="compressor" aria-labelledby="tool-heading">
+      <h2 id="tool-heading">Compress your image</h2>
+      <label class="drop-zone" id="drop-zone" for="file-input">
+        <span class="upload-icon" aria-hidden="true">↑</span><strong>Choose an image or drop it here</strong><span>JPEG, PNG, or WebP • Maximum 15 MB</span>
+        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp">
+      </label>
+      <p class="privacy-note"><span aria-hidden="true">🔒</span> Your image is processed in this browser by this tool.</p>
+      <div id="editor" hidden>
+        <div class="selected-file"><div><strong id="file-name">image.jpg</strong><span id="original-meta">Original image</span></div><button id="reset-button" class="button secondary" type="button">Choose another</button></div>
+        <div class="settings">
+          <div class="setting-head"><label for="quality">Output quality</label><output id="quality-value" for="quality">75%</output></div>
+          <input id="quality" type="range" min="10" max="100" value="75" step="5">
+          <div class="range-labels"><span>Smaller file</span><span>Higher quality</span></div>
+          <label for="format">Output format</label>
+          <select id="format"><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option><option value="image/png">PNG (quality setting not applicable)</option></select>
+          <button id="compress-button" class="button primary full" type="button">Compress image</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div id="result" hidden>
+          <div class="result-grid">
+            <article class="preview-card"><h3>Original</h3><img id="original-preview" alt="Original image preview"><p id="original-size" class="file-size"></p></article>
+            <article class="preview-card"><h3>Compressed</h3><img id="compressed-preview" alt="Compressed image preview"><p id="compressed-size" class="file-size"></p></article>
+          </div>
+          <div class="saving-line"><span>File size change</span><strong id="saving-value">—</strong></div>
+          <a id="download-button" class="button primary full" download="compressed-image.jpg">Download compressed image</a>
+          <p class="small-note">Compression results vary by image and format. Always check visual quality and output size before using the file.</p>
+        </div>
+      </div>
+    </section>
+    <section class="content-section"><h2>How to use the image compressor</h2><ol class="steps"><li>Select a JPEG, PNG, or WebP image up to 15 MB.</li><li>Choose an output format and adjust quality.</li><li>Press <strong>Compress image</strong> and compare the previews and sizes.</li><li>Download the result if it meets your needs.</li></ol></section>
+    <section class="content-section faq" id="faq"><h2>Image compression FAQ</h2>
+      <details><summary>Does this tool upload my image?</summary><p>The compression logic runs in your browser and does not upload the selected image to this website. This statement should be reviewed if you add third-party scripts or server-side features later.</p></details>
+      <details><summary>Why did my PNG become larger?</summary><p>Some images do not compress well when converted. Try WebP or JPEG if transparency is not required. JPEG does not preserve transparency.</p></details>
+      <details><summary>Can this guarantee an image under 100 KB?</summary><p>No. The current version adjusts quality but does not guarantee an exact target size. A target-size feature can be added as a later improvement.</p></details>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="/">PixelLite</a><div><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a></div><p>© <span id="year"></span> PixelLite</p></footer>
+  <script src="/app.js" defer></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
